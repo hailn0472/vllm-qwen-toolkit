@@ -1,0 +1,25 @@
+# Mẫu cấu hình LibreChat. Các giá trị @...@ được điền tự động theo profile đang dùng
+# mỗi lần bật LibreChat (lib/librechat.sh: render_librechat_yaml). Sửa ở đây, không sửa bản đã sinh.
+# Tài liệu: https://www.librechat.ai/docs/configuration/librechat_yaml
+version: 1.3.17
+cache: true
+
+interface:
+  customWelcome: 'Chat với Qwen chạy local bằng vLLM'
+
+endpoints:
+  custom:
+    - name: 'vLLM'
+      apiKey: '@VLLM_API_KEY@'
+      baseURL: '@VLLM_BASE_URL@'
+      models:
+        # fetch: true = lấy danh sách model từ /v1/models của vLLM, nên đổi profile không cần sửa file này
+        default: ['@MODEL@']
+        fetch: true
+      titleConvo: true
+      titleModel: 'current_model'
+      modelDisplayLabel: 'Qwen'
+      # Bật/tắt chế độ thinking của Qwen (theo ENABLE_THINKING trong profile)
+      addParams:
+        chat_template_kwargs:
+          enable_thinking: @ENABLE_THINKING@

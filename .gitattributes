@@ -1,0 +1,2 @@
+# Giữ LF cho mọi file — script bash sẽ lỗi nếu bị đổi sang CRLF trên Windows
+* text=auto eol=lf
